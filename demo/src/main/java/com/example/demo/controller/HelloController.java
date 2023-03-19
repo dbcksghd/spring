@@ -25,5 +25,24 @@ public class HelloController {
     public String HelloString(@RequestParam("name") String name) {
         return "hello" + name;
     }
-    
+
+    @GetMapping("hello-api")
+    @ResponseBody
+    public Hello helloAPI(@RequestParam("name") String name) {
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
+    }
+
+    static class Hello {
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
 }
